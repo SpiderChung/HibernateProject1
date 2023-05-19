@@ -13,17 +13,17 @@ public class Director {
     private int director_id;
     @Column(name = "name")
     private String name;
-    @Column(name = "year_of_production")
-    private int year_of_production;
+    @Column(name = "age")
+    private int age;
     @OneToMany(mappedBy = "director")
     private List<Movie> movies;
 
     public Director() {
     }
 
-    public Director(String name, int year_of_production) {
+    public Director(String name, int age) {
         this.name = name;
-        this.year_of_production = year_of_production;
+        this.age = age;
     }
 
     public String getName() {
@@ -34,12 +34,12 @@ public class Director {
         this.name = name;
     }
 
-    public int getYear_of_production() {
-        return year_of_production;
+    public int getAge() {
+        return age;
     }
 
-    public void setYear_of_production(int year_of_production) {
-        this.year_of_production = year_of_production;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public List<Movie> getMovies() {
@@ -52,12 +52,7 @@ public class Director {
 
     @Override
     public String toString() {
-        return "Director{" +
-                "director_id=" + director_id +
-                ", name='" + name + '\'' +
-                ", year_of_production=" + year_of_production +
-                ", movies=" + movies +
-                '}';
+        return "Director: " + name + ", age=" + age;
     }
 }
 
