@@ -27,22 +27,24 @@ public class App
         try {
             session.beginTransaction();
 
-            Movie movie = session.get(Movie.class, 6);
+            Movie movie = session.get(Movie.class, 7);
 
             Director director = session.get(Director.class, 1);
 
             Director pastDirector = movie.getDirector();
 
             movie.setDirector(director);
+            List<Movie> movies = pastDirector.getMovies();
 
-            pastDirector.getMovies();
-
+            System.out.println(movies);
+            movies.remove(movie);
+            pastDirector.setMovies(movies);
             session.persist(movie);
+            System.out.println(movies);
 
 
             session.getTransaction().commit();
         } finally {
-//            session.close();
             sessionFactory.close();
         }
     }
